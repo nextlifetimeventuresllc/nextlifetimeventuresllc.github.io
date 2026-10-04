@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Join a Sketchitations game</title>
+<style>
+  body { margin: 0; background: #0F0E13; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; color: #9A94A3; }
+  main { max-width: 440px; margin: 0 auto; padding: 56px 20px; text-align: center; }
+  img { width: 88px; height: 88px; border-radius: 20px; }
+  h1 { margin: 20px 0 6px; font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: #F3EDE2; }
+  p { font-size: 15px; line-height: 1.7; margin: 0 0 14px; }
+  .code { font-size: 44px; font-weight: 700; letter-spacing: 8px; color: #A8D5A2; margin: 22px 0 6px; }
+  .btn { display: block; width: 100%; box-sizing: border-box; padding: 17px; border-radius: 999px; border: 0; font: inherit;
+         font-size: 16px; font-weight: 500; text-decoration: none; cursor: pointer; margin-top: 12px; }
+  .primary { background: #A8D5A2; color: #0F0E13; }
+  .second { background: transparent; color: #F3EDE2; border: 1px solid rgba(255,255,255,0.12); }
+  .small { font-size: 13px; margin-top: 26px; }
+  a { color: #A8D5A2; }
+</style>
+</head>
+<body>
+<main>
+  <img src="../icon.png" alt="">
+  <h1>You're invited to a game</h1>
+  <p>Sketchitations: the telephone game with drawings.</p>
+  <div id="has">
+    <p style="margin-top:24px">Game code</p>
+    <div class="code" id="code"></div>
+    <a class="btn primary" id="open" href="#">Open in Sketchitations</a>
+    <button class="btn second" id="copy">Copy the code</button>
+    <p class="small">Don't have the app? <a id="store" href="https://play.google.com/store/apps/details?id=com.nextlifetimeventuresllc.sketchitations">Get it on Google Play</a>,
+    then tap this link again, or open the app, tap Play online and enter the code.</p>
+  </div>
+  <div id="none" hidden>
+    <p style="margin-top:24px">This link is missing its game code. Ask your friend to send it again.</p>
+  </div>
+</main>
+<script>
+  var m = /[?&]code=([A-Za-z0-9]{6})/.exec(location.search);
+  if (!m) {
+    document.getElementById('has').hidden = true;
+    document.getElementById('none').hidden = false;
+  } else {
+    var code = m[1].toUpperCase();
+    document.getElementById('code').textContent = code;
+    // Opens the app if it's installed; Android sends people to the store if not.
+    document.getElementById('open').href = 'intent://join?code=' + code +
+      '#Intent;scheme=sketchitations;package=com.nextlifetimeventuresllc.sketchitations;end';
+    document.getElementById('copy').onclick = function () {
+      var b = this;
+      navigator.clipboard.writeText(code).then(function () { b.textContent = 'Copied'; });
+    };
+  }
+</script>
+</body>
+</html>
