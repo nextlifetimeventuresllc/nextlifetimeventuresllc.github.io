@@ -1,10 +1,13 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.nextlifetimeventuresllc.sketchitations",
       "sha256_cert_fingerprints": [
+        "93:9B:44:4C:35:12:3B:EB:EF:EE:71:EC:E1:D7:3E:B8:04:5B:DA:89:A7:9B:07:28:17:B8:1F:AC:FF:F4:19:93",
         "82:D1:86:E1:96:A1:10:E4:91:2A:34:E3:5D:0A:7E:1D:AE:99:96:D1:C3:A5:B1:E1:55:3D:9D:38:49:7E:F8:A8"
       ]
     }
