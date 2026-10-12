@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["93GQXR76N5.com.nextlifetimeventuresllc.sketchitations"],
+        "components": [
+          { "/": "/sketchitations/join", "comment": "Sketchitations invite links" },
+          { "/": "/sketchitations/join/*", "comment": "Sketchitations invite links" }
+        ]
+      }
+    ]
+  }
+}
