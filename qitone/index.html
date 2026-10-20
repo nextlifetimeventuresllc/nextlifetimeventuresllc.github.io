@@ -23,12 +23,18 @@
   a { color: #E9CF8E; }
   @media (max-width: 520px) { .cols { columns: 1; } }
   .gallery { margin: 8px -18px 8px; }
-  .strip { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 18px 18px; scrollbar-width: thin; scrollbar-color: #3A3122 transparent; }
-  .strip figure { flex: 0 0 210px; margin: 0; scroll-snap-align: center; }
-  .strip img { display: block; width: 210px; height: auto; aspect-ratio: 9 / 20; border-radius: 22px; border: 1px solid #3A3122; background: #120C18; box-shadow: 0 10px 30px rgba(0,0,0,.6); }
+  .strip { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 18px 18px; scrollbar-width: none; }
+  .strip::-webkit-scrollbar { display: none; }
+  .strip figure { flex: 0 0 min(62vw, 260px); margin: 0; scroll-snap-align: center; }
+  .strip img { display: block; width: 100%; height: auto; aspect-ratio: 9 / 20; border-radius: 20px; border: 1px solid #3A3122; background: #120C18; box-shadow: 0 10px 30px rgba(0,0,0,.6); }
   .strip figcaption { margin-top: 10px; font-size: 13px; color: #C9A45C; text-align: center; letter-spacing: .02em; }
   .swipe { text-align: center; font-size: 12px; color: #6E675B; margin: 0; }
-  @media (min-width: 700px) { .gallery { margin: 8px calc(320px - 50vw) 8px; } .strip { justify-content: safe center; } }
+  @media (min-width: 560px) { .strip figure { flex-basis: min(40vw, 240px); } }
+  @media (min-width: 760px) {
+    .gallery { width: min(1000px, calc(100vw - 48px)); margin: 8px 0 8px 50%; transform: translateX(-50%); }
+    .strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px 22px; overflow: visible; padding: 4px 0 18px; }
+    .swipe { display: none; }
+  }
 </style>
 </head>
 <body>
