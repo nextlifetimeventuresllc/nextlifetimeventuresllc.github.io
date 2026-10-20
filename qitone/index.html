@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<link rel="icon" href="/qitone/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/qitone/favicon-32.png"><link rel="apple-touch-icon" href="/qitone/apple-touch-icon.png">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>QiTone</title>
@@ -21,6 +22,13 @@
   .links { text-align: center; margin-top: 36px; }
   a { color: #E9CF8E; }
   @media (max-width: 520px) { .cols { columns: 1; } }
+  .gallery { margin: 8px -18px 8px; }
+  .strip { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 18px 18px; scrollbar-width: thin; scrollbar-color: #3A3122 transparent; }
+  .strip figure { flex: 0 0 210px; margin: 0; scroll-snap-align: center; }
+  .strip img { display: block; width: 210px; height: auto; aspect-ratio: 9 / 20; border-radius: 22px; border: 1px solid #3A3122; background: #120C18; box-shadow: 0 10px 30px rgba(0,0,0,.6); }
+  .strip figcaption { margin-top: 10px; font-size: 13px; color: #C9A45C; text-align: center; letter-spacing: .02em; }
+  .swipe { text-align: center; font-size: 12px; color: #6E675B; margin: 0; }
+  @media (min-width: 700px) { .gallery { margin: 8px calc(320px - 50vw) 8px; } .strip { justify-content: safe center; } }
 </style>
 </head>
 <body>
@@ -32,6 +40,20 @@
     <p class="lede">Sound that brings you back to your best.</p>
     <p>A personalized sound experience inspired by more than 3,000 years of Chinese medicine, to sharpen your focus, find your calm, power what you set out to achieve, and restore yourself when you're spent.</p>
   </header>
+
+  <section class="gallery" aria-label="Screens from the QiTone app">
+    <div class="strip">
+      <figure><img src="screens/today.webp" width="210" height="467" loading="lazy" alt="QiTone app: Today"><figcaption>Today</figcaption></figure>
+      <figure><img src="screens/start-here.webp" width="210" height="467" loading="lazy" alt="QiTone app: Start here"><figcaption>Start here</figcaption></figure>
+      <figure><img src="screens/where-to-go.webp" width="210" height="467" loading="lazy" alt="QiTone app: Where do you want to go?"><figcaption>Where do you want to go?</figcaption></figure>
+      <figure><img src="screens/session.webp" width="210" height="467" loading="lazy" alt="QiTone app: A session made for you"><figcaption>A session made for you</figcaption></figure>
+      <figure><img src="screens/player.webp" width="210" height="467" loading="lazy" alt="QiTone app: Now playing"><figcaption>Now playing</figcaption></figure>
+      <figure><img src="screens/library.webp" width="210" height="467" loading="lazy" alt="QiTone app: Library"><figcaption>Library</figcaption></figure>
+      <figure><img src="screens/artists.webp" width="210" height="467" loading="lazy" alt="QiTone app: Artists"><figcaption>Artists</figcaption></figure>
+      <figure><img src="screens/you.webp" width="210" height="467" loading="lazy" alt="QiTone app: You"><figcaption>You</figcaption></figure>
+    </div>
+    <p class="swipe">Swipe to see more</p>
+  </section>
 
   <p>Designed and developed by Candice Nelms, Dipl. OM, Diplomate of Oriental Medicine, QiTone was created
   to make Chinese medicine more accessible through immersive music and guided sound journeys.</p>
