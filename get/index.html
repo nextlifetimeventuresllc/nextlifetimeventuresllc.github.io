@@ -14,6 +14,15 @@
   var APP_STORE = '';   // e.g. https://apps.apple.com/app/id0000000000, when QiTone is live on iPhone
   var ua = navigator.userAgent || '';
   var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  // Counted before forwarding: the day, the kind of phone and where it was
+  // scanned (?from=sign, ?from=card…). No cookies; nothing about the person.
+  try {
+    var from = (new URLSearchParams(location.search).get('from') || 'direct').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 24) || 'direct';
+    var device = /Android/i.test(ua) ? 'android' : ios ? 'iphone' : 'computer';
+    var body = JSON.stringify({ from: from, device: device });
+    if (!(navigator.sendBeacon && navigator.sendBeacon('https://qitone.web.app/api/scan', new Blob([body], { type: 'text/plain' }))))
+      fetch('https://qitone.web.app/api/scan', { method: 'POST', mode: 'no-cors', keepalive: true, body: body });
+  } catch (e) { /* counting never blocks the way to the store */ }
   if (/Android/i.test(ua)) location.replace(PLAY);
   else if (ios && APP_STORE) location.replace(APP_STORE);
 </script>
