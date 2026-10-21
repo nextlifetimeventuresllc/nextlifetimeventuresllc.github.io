@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/qitone/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/qitone/apple-touch-icon.png">
+<title>Get QiTone</title>
+<meta name="description" content="QiTone: Five Element tones and music. Sound that brings you back to your best.">
+<script>
+  // One link for every phone: the QR code on signs and cards points here
+  // (nextlifetimeventuresllc.com/get), so it never has to change: Android goes to
+  // Google Play, iPhone to the App Store once QiTone is live there.
+  var PLAY = 'https://play.google.com/store/apps/details?id=com.nextlifetimeventuresllc.qitone';
+  var APP_STORE = '';   // e.g. https://apps.apple.com/app/id0000000000, when QiTone is live on iPhone
+  var ua = navigator.userAgent || '';
+  var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (/Android/i.test(ua)) location.replace(PLAY);
+  else if (ios && APP_STORE) location.replace(APP_STORE);
+</script>
+<style>
+  :root { color-scheme: dark; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:#1C0A2B; color:#F4ECFA; font:17px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; text-align:center; }
+  main { max-width:420px; padding:40px 24px; }
+  img { width:112px; height:112px; border-radius:26px; }
+  h1 { font-size:28px; margin:20px 0 6px; }
+  p { color:#BBA8C9; margin:0 0 24px; }
+  a.button { display:block; padding:15px 20px; margin:0 0 12px; border-radius:999px; text-decoration:none; font-weight:600; }
+  a.primary { background:#E4B6FE; color:#2A0048; }
+  a.quiet { border:1px solid #43275C; color:#F4ECFA; }
+  .soon { font-size:14px; }
+  [hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<main>
+  <img src="/qitone/icon.png" alt="QiTone">
+  <h1>QiTone</h1>
+  <p>Sound that brings you back to your best.</p>
+  <a class="button primary" id="play" href="https://play.google.com/store/apps/details?id=com.nextlifetimeventuresllc.qitone">Get it on Google Play</a>
+  <a class="button quiet" id="apple" href="#" hidden>Download on the App Store</a>
+  <p class="soon" id="soon">Coming soon to iPhone.</p>
+  <p class="soon"><a href="https://nextlifetimeventuresllc.com/qitone/" style="color:#E4B6FE">About QiTone</a></p>
+</main>
+<script>
+  if (APP_STORE) { var a = document.getElementById('apple'); a.href = APP_STORE; a.hidden = false; document.getElementById('soon').hidden = true; }
+</script>
+</body>
+</html>
