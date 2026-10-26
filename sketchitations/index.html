@@ -5,7 +5,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sketchitations</title>
-<meta name="description" content="Sketchitations: the telephone game with drawings. Pass one device around or play online with friends. Write, draw, guess, and watch the message fall apart.">
+<meta name="description" content="Sketchitations is the telephone game with drawings, for 3 to 12 players. Pass one phone around in the car, in line or at the table, or play online with friends. Write, draw, guess, and watch the message fall apart.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": ["MobileApplication", "VideoGame"], "name": "Sketchitations", "alternateName": "Sketchitations: Draw/Interpret", "description": "The telephone game with drawings. One player writes a phrase, the next draws it, the next guesses the drawing, and so on down the line; then everyone sees how the message changed. Pass one phone or tablet around, offline, or play online with friends on their own phones.", "url": "https://nextlifetimeventuresllc.com/sketchitations/", "image": "https://nextlifetimeventuresllc.com/sketchitations/icon.png", "applicationCategory": "GameApplication", "genre": ["Party game", "Drawing game", "Word game"], "operatingSystem": "iOS, iPadOS, Android", "numberOfPlayers": {"@type": "QuantitativeValue", "minValue": 3, "maxValue": 12}, "playMode": "MultiPlayer", "inLanguage": "en", "offers": {"@type": "Offer", "price": "2.99", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Next Lifetime Ventures LLC", "url": "https://nextlifetimeventuresllc.com/"}, "installUrl": ["https://apps.apple.com/app/id6821997307", "https://play.google.com/store/apps/details?id=com.nextlifetimeventuresllc.sketchitations"]}</script>
 <style>
   body { margin: 0; background: #0F0E13; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; color: #9A94A3; }
   main { max-width: 600px; margin: 0 auto; padding: 72px 18px; text-align: center; }
@@ -15,6 +16,14 @@
   h1 span { color: #A8D5A2; }
   p { font-size: 16px; line-height: 1.75; margin: 0 0 14px; }
   a { color: #A8D5A2; }
+  h2 { margin: 40px 0 12px; font-size: 22px; color: #F3EDE2; }
+  .stores { display: flex; flex-direction: column; gap: 10px; margin: 28px auto 8px; max-width: 360px; }
+  .stores a { display: block; padding: 16px; border-radius: 999px; font-weight: 600; text-decoration: none; }
+  .stores a:first-child { background: #A8D5A2; color: #0F0E13; }
+  .stores a + a { border: 1px solid #3a3842; color: #F3EDE2; }
+  ul { text-align: left; padding-left: 20px; margin: 0 0 14px; line-height: 1.7; }
+  li { margin-bottom: 8px; }
+  li strong { color: #F3EDE2; }
 </style>
 </head>
 <body>
@@ -29,10 +38,49 @@
   road trips and waiting rooms. Or play online: send friends a game code and everyone plays on their own
   phone, or get matched with other players. Funniest with 6 to 10 players.</p>
   <p>Turn timers, silly dares for more time, seven family-friendly idea packs, and a reveal you can share.</p>
+  <div class="stores">
+    <a data-store="apple" href="https://apps.apple.com/app/id6821997307">Download on the App Store</a>
+    <a data-store="play" href="https://play.google.com/store/apps/details?id=com.nextlifetimeventuresllc.sketchitations">Get it on Google Play</a>
+  </div>
+  <h2>When it&rsquo;s handy</h2>
+  <ul>
+    <li><strong>Long drives.</strong> Pass one phone or tablet around the passengers. It works with no signal. (The driver sits this one out.)</li>
+    <li><strong>Waiting.</strong> For a table, for food, in a theme park line, at the airport gate. A quick round with three or four people takes a few minutes and pauses whenever you need to move.</li>
+    <li><strong>Family game night.</strong> Anyone who can write a short phrase and doodle can play, so parents, grandparents and kids can play together. The built-in ideas are family-friendly.</li>
+    <li><strong>Parties and get-togethers.</strong> Funniest with 6 to 10 people, when the message has the most room to drift.</li>
+    <li><strong>Friends who aren&rsquo;t in the same place.</strong> Play online, each on your own phone, live or across the day with a notification when it&rsquo;s your turn. Online play is for ages 13 and up.</li>
+  </ul>
+  <h2>Good to know</h2>
+  <ul>
+    <li>3 to 12 players. Two people is too few for the message to change.</li>
+    <li>For iPhone, iPad and Android phones and tablets. iPhone and Android players can play online together.</li>
+    <li>Pay once. No ads, no subscriptions, nothing extra to buy.</li>
+  </ul>
   <p>No ads. No tracking. No chat, photos or profiles. Pass-and-play is for all ages; online play is for ages 13 and up.</p>
   <p><strong>Help and support.</strong> Questions, a problem with the app, or a player to report? Email
   <a href="mailto:dev@nextlifetimeventuresllc.com">dev@nextlifetimeventuresllc.com</a> and we&rsquo;ll get back to you.</p>
-  <p><a href="privacy.html">Privacy policy</a> · <a href="delete.html">Delete your data</a> · <a href="../">Next Lifetime Ventures</a></p>
+  <p><a href="privacy.html">Privacy policy</a> · <a href="../terms.html">Terms</a> · <a href="delete.html">Delete your data</a> · <a href="../">Next Lifetime Ventures</a></p>
 </main>
+<script>
+  var src = /[?&]src=([a-z0-9_-]{1,20})/i.exec(location.search);
+  src = src ? src[1].toLowerCase() : '';
+  var PLAY = 'https://play.google.com/store/apps/details?id=com.nextlifetimeventuresllc.sketchitations';
+  var APPLE = 'https://apps.apple.com/app/id6821997307';
+  // App Store Connect > App Analytics > Campaigns shows this provider token ("pt"). Apple only counts a campaign link that has it.
+  var APPLE_PROVIDER = '';
+  if (src) {
+    PLAY += '&referrer=' + encodeURIComponent('utm_source=' + src + '&utm_medium=referral&utm_campaign=' + src);
+    if (APPLE_PROVIDER) APPLE += '?pt=' + APPLE_PROVIDER + '&ct=' + src + '&mt=8';
+  }
+  var ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var android = /Android/.test(navigator.userAgent);
+  document.querySelectorAll('[data-store=apple]').forEach(function (a) { a.href = APPLE; });
+  document.querySelectorAll('[data-store=play]').forEach(function (a) { a.href = PLAY; });
+  // Put this phone's store first.
+  document.querySelectorAll('.stores').forEach(function (box) {
+    var first = box.querySelector(android ? '[data-store=play]' : '[data-store=apple]');
+    if (first && (ios || android)) box.insertBefore(first, box.firstChild);
+  });
+</script>
 </body>
 </html>

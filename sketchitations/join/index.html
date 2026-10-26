@@ -31,8 +31,11 @@
     <div class="code" id="code"></div>
     <a class="btn primary" id="open" href="#">Open in Sketchitations</a>
     <button class="btn second" id="copy">Copy the code</button>
-    <p class="small">Don't have the app? <a id="store" href="https://play.google.com/store/apps/details?id=com.nextlifetimeventuresllc.sketchitations">Get it on Google Play</a>,
-    then tap this link again, or open the app, tap Play online and enter the code.</p>
+    <p class="small">Don't have the app yet? Get it, then tap this link again, or open the app, tap Play online and enter the code.</p>
+    <div class="stores">
+      <a class="btn second" data-store="apple" href="https://apps.apple.com/app/id6821997307">Download on the App Store</a>
+      <a class="btn second" data-store="play" href="https://play.google.com/store/apps/details?id=com.nextlifetimeventuresllc.sketchitations">Get it on Google Play</a>
+    </div>
   </div>
   <div id="none" hidden>
     <p style="margin-top:24px">This link is missing its game code. Ask your friend to send it again.</p>
@@ -46,14 +49,37 @@
   } else {
     var code = m[1].toUpperCase();
     document.getElementById('code').textContent = code;
-    // Opens the app if it's installed; Android sends people to the store if not.
-    document.getElementById('open').href = 'intent://join?code=' + code +
-      '#Intent;scheme=sketchitations;package=com.nextlifetimeventuresllc.sketchitations;end';
+    // Opens the app if it's installed. On Android, the system sends people to the store if not;
+    // on iPhone, the store buttons below do that.
+    document.getElementById('open').href = /Android/.test(navigator.userAgent)
+      ? 'intent://join?code=' + code + '#Intent;scheme=sketchitations;package=com.nextlifetimeventuresllc.sketchitations;end'
+      : 'sketchitations://join?code=' + code;
     document.getElementById('copy').onclick = function () {
       var b = this;
       navigator.clipboard.writeText(code).then(function () { b.textContent = 'Copied'; });
     };
   }
+</script>
+<script>
+  var src = /[?&]src=([a-z0-9_-]{1,20})/i.exec(location.search);
+  src = src ? src[1].toLowerCase() : '';
+  var PLAY = 'https://play.google.com/store/apps/details?id=com.nextlifetimeventuresllc.sketchitations';
+  var APPLE = 'https://apps.apple.com/app/id6821997307';
+  // App Store Connect > App Analytics > Campaigns shows this provider token ("pt"). Apple only counts a campaign link that has it.
+  var APPLE_PROVIDER = '';
+  if (src) {
+    PLAY += '&referrer=' + encodeURIComponent('utm_source=' + src + '&utm_medium=referral&utm_campaign=' + src);
+    if (APPLE_PROVIDER) APPLE += '?pt=' + APPLE_PROVIDER + '&ct=' + src + '&mt=8';
+  }
+  var ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var android = /Android/.test(navigator.userAgent);
+  document.querySelectorAll('[data-store=apple]').forEach(function (a) { a.href = APPLE; });
+  document.querySelectorAll('[data-store=play]').forEach(function (a) { a.href = PLAY; });
+  // Put this phone's store first.
+  document.querySelectorAll('.stores').forEach(function (box) {
+    var first = box.querySelector(android ? '[data-store=play]' : '[data-store=apple]');
+    if (first && (ios || android)) box.insertBefore(first, box.firstChild);
+  });
 </script>
 </body>
 </html>
